@@ -1,0 +1,2 @@
+2025-08-08:19:36:02,367 INFO     [psi4.driver.task_planner:285] PLANNING Atomic:  keywords={'CUBEPROP_TASKS': ['ORBITALS'], 'D_CONVERGENCE': 1e-08, 'E_CONVERGENCE': 1e-08, 'GUESS': 'SAD', 'REFERENCE': 'RHF', 'SCF_TYPE': 'PK', 'function_kwargs': {}}
+2025-08-08:19:36:02,369 INFO     [psi4.driver.driver:523] Compute energy(): method=hf, basis=6-31g*, molecule=sam_cytosine, nre=567.8589519612715
