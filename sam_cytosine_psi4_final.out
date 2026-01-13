@@ -1,0 +1,178 @@
+
+    -----------------------------------------------------------------------
+          Psi4: An Open-Source Ab Initio Electronic Structure Package
+                               Psi4 1.9.1 release
+
+                         Git: Rev {} zzzzzzz 
+
+
+    D. G. A. Smith, L. A. Burns, A. C. Simmonett, R. M. Parrish,
+    M. C. Schieber, R. Galvelis, P. Kraus, H. Kruse, R. Di Remigio,
+    A. Alenaizan, A. M. James, S. Lehtola, J. P. Misiewicz, M. Scheurer,
+    R. A. Shaw, J. B. Schriber, Y. Xie, Z. L. Glick, D. A. Sirianni,
+    J. S. O'Brien, J. M. Waldrop, A. Kumar, E. G. Hohenstein,
+    B. P. Pritchard, B. R. Brooks, H. F. Schaefer III, A. Yu. Sokolov,
+    K. Patkowski, A. E. DePrince III, U. Bozkaya, R. A. King,
+    F. A. Evangelista, J. M. Turney, T. D. Crawford, C. D. Sherrill,
+    J. Chem. Phys. 152(18) 184108 (2020). https://doi.org/10.1063/5.0006002
+
+                            Additional Code Authors
+    E. T. Seidl, C. L. Janssen, E. F. Valeev, M. L. Leininger,
+    J. F. Gonthier, R. M. Richard, H. R. McAlexander, M. Saitow, X. Wang,
+    P. Verma, M. H. Lechner, A. Jiang, S. Behnle, A. G. Heide,
+    M. F. Herbst, and D. L. Poole
+
+             Previous Authors, Complete List of Code Contributors,
+                       and Citations for Specific Modules
+    https://github.com/psi4/psi4/blob/master/codemeta.json
+    https://github.com/psi4/psi4/graphs/contributors
+    http://psicode.org/psi4manual/master/introduction.html#citing-psifour
+
+    -----------------------------------------------------------------------
+
+
+    Psi4 started on: Friday, 08 August 2025 07:36PM
+
+    Process ID: 88519
+    Host:       Horaces-Mac-Pro.local
+    PSIDATADIR: /opt/anaconda3/envs/psi4_env/share/psi4
+    Memory:     500.0 MiB
+    Threads:    1
+    
+  ==> Input File <==
+
+--------------------------------------------------------------------------
+
+molecule sam_cytosine {
+  0 1
+  S     0.0000 0.0000 0.0000
+  C     1.8000 0.0000 0.0000
+  H     2.2000 0.8900 0.0000
+  H     2.2000 -0.4450 0.7710
+  H     2.2000 -0.4450 -0.7710
+  N    -2.0000 0.0000 0.0000
+  C    -2.6000 1.2000 0.0000
+  N    -3.9000 1.2000 0.0000
+  C    -4.5000 0.0000 0.0000
+  C    -3.9000 -1.2000 0.0000
+  C    -2.6000 -1.2000 0.0000
+  H    -2.1000 2.1000 0.0000
+  H    -5.6000 0.0000 0.0000
+  H    -4.4000 -2.1000 0.0000
+  H    -2.1000 -2.1000 0.0000
+  N    -0.8000 0.0000 0.0000
+}
+
+set {
+  basis          6-31G*
+  scf_type       pk
+  reference      rhf
+  cubeprop_tasks ['orbitals']
+  guess          sad
+  e_convergence  1e-8
+  d_convergence  1e-8
+}
+
+energy('hf')
+--------------------------------------------------------------------------
+
+Scratch directory: /tmp/
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/psi4_env/bin/psi4", line 387, in <module>
+    exec(content)
+  File "<string>", line 46, in <module>
+  File "/opt/anaconda3/envs/psi4_env/lib/python3.12/site-packages/psi4/driver/driver.py", line 524, in energy
+    logger.debug("w/EFP" if hasattr(molecule, "EFP") else pp.pformat(molecule.to_dict()))
+                                                                     ^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/psi4_env/lib/python3.12/site-packages/psi4/driver/qcdb/molecule.py", line 1655, in to_dict
+    validated_molrec = qcel.molparse.from_arrays(speclabel=False, nonphysical=True, verbose=0, domain='qm', **molrec)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/psi4_env/lib/python3.12/site-packages/qcelemental/molparse/from_arrays.py", line 352, in from_arrays
+    processed = validate_and_fill_geometry(geom=geom, tooclose=tooclose, copy=copy)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/psi4_env/lib/python3.12/site-packages/qcelemental/molparse/from_arrays.py", line 612, in validate_and_fill_geometry
+    raise ValidationError(
+
+qcelemental.exceptions.ValidationError: Following atoms are too close: [(0, np.int64(1), np.float64(0.0)), (0, np.int64(2), np.float64(0.0)), (0, np.int64(3), np.float64(0.0)), (0, np.int64(4), np.float64(0.0)), (0, np.int64(5), np.float64(0.0)), (0, np.int64(6), np.float64(0.0)), (0, np.int64(7), np.float64(0.0)), (0, np.int64(8), np.float64(0.0)), (0, np.int64(9), np.float64(0.0)), (0, np.int64(10), np.float64(0.0)), (0, np.int64(11), np.float64(0.0)), (0, np.int64(12), np.float64(0.0)), (0, np.int64(13), np.float64(0.0)), (0, np.int64(14), np.float64(0.0)), (0, np.int64(15), np.float64(0.0)), (1, np.int64(2), np.float64(0.0)), (1, np.int64(3), np.float64(0.0)), (1, np.int64(4), np.float64(0.0)), (1, np.int64(5), np.float64(0.0)), (1, np.int64(6), np.float64(0.0)), (1, np.int64(7), np.float64(0.0)), (1, np.int64(8), np.float64(0.0)), (1, np.int64(9), np.float64(0.0)), (1, np.int64(10), np.float64(0.0)), (1, np.int64(11), np.float64(0.0)), (1, np.int64(12), np.float64(0.0)), (1, np.int64(13), np.float64(0.0)), (1, np.int64(14), np.float64(0.0)), (1, np.int64(15), np.float64(0.0)), (2, np.int64(3), np.float64(0.0)), (2, np.int64(4), np.float64(0.0)), (2, np.int64(5), np.float64(0.0)), (2, np.int64(6), np.float64(0.0)), (2, np.int64(7), np.float64(0.0)), (2, np.int64(8), np.float64(0.0)), (2, np.int64(9), np.float64(0.0)), (2, np.int64(10), np.float64(0.0)), (2, np.int64(11), np.float64(0.0)), (2, np.int64(12), np.float64(0.0)), (2, np.int64(13), np.float64(0.0)), (2, np.int64(14), np.float64(0.0)), (2, np.int64(15), np.float64(0.0)), (3, np.int64(4), np.float64(0.0)), (3, np.int64(5), np.float64(0.0)), (3, np.int64(6), np.float64(0.0)), (3, np.int64(7), np.float64(0.0)), (3, np.int64(8), np.float64(0.0)), (3, np.int64(9), np.float64(0.0)), (3, np.int64(10), np.float64(0.0)), (3, np.int64(11), np.float64(0.0)), (3, np.int64(12), np.float64(0.0)), (3, np.int64(13), np.float64(0.0)), (3, np.int64(14), np.float64(0.0)), (3, np.int64(15), np.float64(0.0)), (4, np.int64(5), np.float64(0.0)), (4, np.int64(6), np.float64(0.0)), (4, np.int64(7), np.float64(0.0)), (4, np.int64(8), np.float64(0.0)), (4, np.int64(9), np.float64(0.0)), (4, np.int64(10), np.float64(0.0)), (4, np.int64(11), np.float64(0.0)), (4, np.int64(12), np.float64(0.0)), (4, np.int64(13), np.float64(0.0)), (4, np.int64(14), np.float64(0.0)), (4, np.int64(15), np.float64(0.0)), (5, np.int64(6), np.float64(0.0)), (5, np.int64(7), np.float64(0.0)), (5, np.int64(8), np.float64(0.0)), (5, np.int64(9), np.float64(0.0)), (5, np.int64(10), np.float64(0.0)), (5, np.int64(11), np.float64(0.0)), (5, np.int64(12), np.float64(0.0)), (5, np.int64(13), np.float64(0.0)), (5, np.int64(14), np.float64(0.0)), (5, np.int64(15), np.float64(0.0)), (6, np.int64(7), np.float64(0.0)), (6, np.int64(8), np.float64(0.0)), (6, np.int64(9), np.float64(0.0)), (6, np.int64(10), np.float64(0.0)), (6, np.int64(11), np.float64(0.0)), (6, np.int64(12), np.float64(0.0)), (6, np.int64(13), np.float64(0.0)), (6, np.int64(14), np.float64(0.0)), (6, np.int64(15), np.float64(0.0)), (7, np.int64(8), np.float64(0.0)), (7, np.int64(9), np.float64(0.0)), (7, np.int64(10), np.float64(0.0)), (7, np.int64(11), np.float64(0.0)), (7, np.int64(12), np.float64(0.0)), (7, np.int64(13), np.float64(0.0)), (7, np.int64(14), np.float64(0.0)), (7, np.int64(15), np.float64(0.0)), (8, np.int64(9), np.float64(0.0)), (8, np.int64(10), np.float64(0.0)), (8, np.int64(11), np.float64(0.0)), (8, np.int64(12), np.float64(0.0)), (8, np.int64(13), np.float64(0.0)), (8, np.int64(14), np.float64(0.0)), (8, np.int64(15), np.float64(0.0)), (9, np.int64(10), np.float64(0.0)), (9, np.int64(11), np.float64(0.0)), (9, np.int64(12), np.float64(0.0)), (9, np.int64(13), np.float64(0.0)), (9, np.int64(14), np.float64(0.0)), (9, np.int64(15), np.float64(0.0)), (10, np.int64(11), np.float64(0.0)), (10, np.int64(12), np.float64(0.0)), (10, np.int64(13), np.float64(0.0)), (10, np.int64(14), np.float64(0.0)), (10, np.int64(15), np.float64(0.0)), (11, np.int64(12), np.float64(0.0)), (11, np.int64(13), np.float64(0.0)), (11, np.int64(14), np.float64(0.0)), (11, np.int64(15), np.float64(0.0)), (12, np.int64(13), np.float64(0.0)), (12, np.int64(14), np.float64(0.0)), (12, np.int64(15), np.float64(0.0)), (13, np.int64(14), np.float64(0.0)), (13, np.int64(15), np.float64(0.0)), (14, np.int64(15), np.float64(0.0))]
+
+
+Printing out the relevant lines from the Psithon --> Python processed input file:
+    core.set_global_option("REFERENCE", "rhf")
+    core.set_global_option("CUBEPROP_TASKS", ['orbitals'])
+    core.set_global_option("GUESS", "sad")
+    core.set_global_option("E_CONVERGENCE", 1e-8)
+    core.set_global_option("D_CONVERGENCE", 1e-8)
+--> energy('hf')
+
+!----------------------------------------------------------------------------------!
+!                                                                                  !
+!  Following atoms are too close: [(0, np.int64(1), np.float64(0.0)), (0,          !
+!     np.int64(2), np.float64(0.0)), (0, np.int64(3), np.float64(0.0)), (0,        !
+!     np.int64(4), np.float64(0.0)), (0, np.int64(5), np.float64(0.0)), (0,        !
+!     np.int64(6), np.float64(0.0)), (0, np.int64(7), np.float64(0.0)), (0,        !
+!     np.int64(8), np.float64(0.0)), (0, np.int64(9), np.float64(0.0)), (0,        !
+!     np.int64(10), np.float64(0.0)), (0, np.int64(11), np.float64(0.0)), (0,      !
+!     np.int64(12), np.float64(0.0)), (0, np.int64(13), np.float64(0.0)), (0,      !
+!     np.int64(14), np.float64(0.0)), (0, np.int64(15), np.float64(0.0)), (1,      !
+!     np.int64(2), np.float64(0.0)), (1, np.int64(3), np.float64(0.0)), (1,        !
+!     np.int64(4), np.float64(0.0)), (1, np.int64(5), np.float64(0.0)), (1,        !
+!     np.int64(6), np.float64(0.0)), (1, np.int64(7), np.float64(0.0)), (1,        !
+!     np.int64(8), np.float64(0.0)), (1, np.int64(9), np.float64(0.0)), (1,        !
+!     np.int64(10), np.float64(0.0)), (1, np.int64(11), np.float64(0.0)), (1,      !
+!     np.int64(12), np.float64(0.0)), (1, np.int64(13), np.float64(0.0)), (1,      !
+!     np.int64(14), np.float64(0.0)), (1, np.int64(15), np.float64(0.0)), (2,      !
+!     np.int64(3), np.float64(0.0)), (2, np.int64(4), np.float64(0.0)), (2,        !
+!     np.int64(5), np.float64(0.0)), (2, np.int64(6), np.float64(0.0)), (2,        !
+!     np.int64(7), np.float64(0.0)), (2, np.int64(8), np.float64(0.0)), (2,        !
+!     np.int64(9), np.float64(0.0)), (2, np.int64(10), np.float64(0.0)), (2,       !
+!     np.int64(11), np.float64(0.0)), (2, np.int64(12), np.float64(0.0)), (2,      !
+!     np.int64(13), np.float64(0.0)), (2, np.int64(14), np.float64(0.0)), (2,      !
+!     np.int64(15), np.float64(0.0)), (3, np.int64(4), np.float64(0.0)), (3,       !
+!     np.int64(5), np.float64(0.0)), (3, np.int64(6), np.float64(0.0)), (3,        !
+!     np.int64(7), np.float64(0.0)), (3, np.int64(8), np.float64(0.0)), (3,        !
+!     np.int64(9), np.float64(0.0)), (3, np.int64(10), np.float64(0.0)), (3,       !
+!     np.int64(11), np.float64(0.0)), (3, np.int64(12), np.float64(0.0)), (3,      !
+!     np.int64(13), np.float64(0.0)), (3, np.int64(14), np.float64(0.0)), (3,      !
+!     np.int64(15), np.float64(0.0)), (4, np.int64(5), np.float64(0.0)), (4,       !
+!     np.int64(6), np.float64(0.0)), (4, np.int64(7), np.float64(0.0)), (4,        !
+!     np.int64(8), np.float64(0.0)), (4, np.int64(9), np.float64(0.0)), (4,        !
+!     np.int64(10), np.float64(0.0)), (4, np.int64(11), np.float64(0.0)), (4,      !
+!     np.int64(12), np.float64(0.0)), (4, np.int64(13), np.float64(0.0)), (4,      !
+!     np.int64(14), np.float64(0.0)), (4, np.int64(15), np.float64(0.0)), (5,      !
+!     np.int64(6), np.float64(0.0)), (5, np.int64(7), np.float64(0.0)), (5,        !
+!     np.int64(8), np.float64(0.0)), (5, np.int64(9), np.float64(0.0)), (5,        !
+!     np.int64(10), np.float64(0.0)), (5, np.int64(11), np.float64(0.0)), (5,      !
+!     np.int64(12), np.float64(0.0)), (5, np.int64(13), np.float64(0.0)), (5,      !
+!     np.int64(14), np.float64(0.0)), (5, np.int64(15), np.float64(0.0)), (6,      !
+!     np.int64(7), np.float64(0.0)), (6, np.int64(8), np.float64(0.0)), (6,        !
+!     np.int64(9), np.float64(0.0)), (6, np.int64(10), np.float64(0.0)), (6,       !
+!     np.int64(11), np.float64(0.0)), (6, np.int64(12), np.float64(0.0)), (6,      !
+!     np.int64(13), np.float64(0.0)), (6, np.int64(14), np.float64(0.0)), (6,      !
+!     np.int64(15), np.float64(0.0)), (7, np.int64(8), np.float64(0.0)), (7,       !
+!     np.int64(9), np.float64(0.0)), (7, np.int64(10), np.float64(0.0)), (7,       !
+!     np.int64(11), np.float64(0.0)), (7, np.int64(12), np.float64(0.0)), (7,      !
+!     np.int64(13), np.float64(0.0)), (7, np.int64(14), np.float64(0.0)), (7,      !
+!     np.int64(15), np.float64(0.0)), (8, np.int64(9), np.float64(0.0)), (8,       !
+!     np.int64(10), np.float64(0.0)), (8, np.int64(11), np.float64(0.0)), (8,      !
+!     np.int64(12), np.float64(0.0)), (8, np.int64(13), np.float64(0.0)), (8,      !
+!     np.int64(14), np.float64(0.0)), (8, np.int64(15), np.float64(0.0)), (9,      !
+!     np.int64(10), np.float64(0.0)), (9, np.int64(11), np.float64(0.0)), (9,      !
+!     np.int64(12), np.float64(0.0)), (9, np.int64(13), np.float64(0.0)), (9,      !
+!     np.int64(14), np.float64(0.0)), (9, np.int64(15), np.float64(0.0)), (10,     !
+!     np.int64(11), np.float64(0.0)), (10, np.int64(12), np.float64(0.0)), (10,    !
+!     np.int64(13), np.float64(0.0)), (10, np.int64(14), np.float64(0.0)), (10,    !
+!     np.int64(15), np.float64(0.0)), (11, np.int64(12), np.float64(0.0)), (11,    !
+!     np.int64(13), np.float64(0.0)), (11, np.int64(14), np.float64(0.0)), (11,    !
+!     np.int64(15), np.float64(0.0)), (12, np.int64(13), np.float64(0.0)), (12,    !
+!     np.int64(14), np.float64(0.0)), (12, np.int64(15), np.float64(0.0)), (13,    !
+!     np.int64(14), np.float64(0.0)), (13, np.int64(15), np.float64(0.0)), (14,    !
+!     np.int64(15), np.float64(0.0))]                                              !
+!                                                                                  !
+!----------------------------------------------------------------------------------!
+
+    Psi4 stopped on: Friday, 08 August 2025 07:36PM
+    Psi4 wall time for execution: 0:00:00.02
+
+*** Psi4 encountered an error. Buy a developer more coffee!
+*** Resources and help at github.com/psi4/psi4.
